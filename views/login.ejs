@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Sign In</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="/css/auth.css">
+</head>
+
+<body>
+
+    <main class="auth-page">
+
+        <section class="auth-container">
+
+            <!-- Brand -->
+            <div class="auth-brand">
+                <div class="brand-logo">A</div>
+
+                <span>Authentication</span>
+            </div>
+
+
+            <!-- LOGIN VIEW -->
+
+            <div id="loginView" class="auth-view">
+
+                <div class="auth-heading">
+                    <span class="eyebrow">Welcome back</span>
+
+                    <h1>Sign in to your account</h1>
+
+                    <p>
+                        Enter your email and password to continue.
+                    </p>
+                </div>
+
+
+                <!-- Message -->
+                <div id="loginMessage" class="message" role="alert" aria-live="polite"></div>
+
+
+                <form id="loginForm" novalidate>
+
+                    <!-- Email -->
+                    <div class="form-group">
+
+                        <label for="loginEmail">
+                            Email address
+                        </label>
+
+                        <input type="email" id="loginEmail" name="email" placeholder="you@example.com"
+                            autocomplete="email" required>
+
+                        <small id="loginEmailError" class="field-error"></small>
+
+                    </div>
+
+
+                    <!-- Password -->
+                    <div class="form-group">
+
+                        <div class="label-row">
+
+                            <label for="loginPassword">
+                                Password
+                            </label>
+
+                            <button type="button" class="text-button" id="forgotPasswordButton">
+                                Forgot password?
+                            </button>
+
+                        </div>
+
+
+                        <div class="password-wrapper">
+
+                            <input type="password" id="loginPassword" name="password" placeholder="Enter your password"
+                                autocomplete="current-password" required>
+
+                            <button type="button" class="password-toggle" data-target="loginPassword"
+                                aria-label="Show password">
+                                Show
+                            </button>
+
+                        </div>
+
+                        <small id="loginPasswordError" class="field-error"></small>
+
+                    </div>
+
+
+                    <!-- Submit -->
+                    <button type="submit" class="primary-button" id="loginButton">
+                        <span class="button-text">
+                            Sign in
+                        </span>
+
+                        <span class="button-loader">
+                            Signing in...
+                        </span>
+                    </button>
+
+                </form>
+
+
+                <div class="auth-footer">
+
+                    <span>
+                        Don't have an account?
+                    </span>
+
+                    <button type="button" class="link-button" id="showSignupButton">
+                        Create account
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- FORGOT PASSWORD VIEW -->
+
+            <div id="forgotView" class="auth-view hidden">
+
+                <button type="button" class="back-button" id="backToLoginFromForgot">
+                    ← Back to sign in
+                </button>
+
+
+                <div class="auth-heading">
+
+                    <span class="eyebrow">
+                        Password recovery
+                    </span>
+
+                    <h1>Forgot your password?</h1>
+
+                    <p>
+                        Enter your email and we'll send you a
+                        verification code.
+                    </p>
+
+                </div>
+
+
+                <div id="forgotMessage" class="message" role="alert" aria-live="polite"></div>
+
+
+                <form id="forgotForm">
+
+                    <div class="form-group">
+
+                        <label for="forgotEmail">
+                            Email address
+                        </label>
+
+                        <input type="email" id="forgotEmail" placeholder="you@example.com" autocomplete="email"
+                            required>
+
+                    </div>
+
+
+                    <button type="submit" class="primary-button" id="forgotButton">
+
+                        <span class="button-text">
+                            Send verification code
+                        </span>
+
+                        <span class="button-loader">
+                            Sending...
+                        </span>
+
+                    </button>
+
+                </form>
+
+            </div>
+
+
+            <!-- RESET PASSWORD VIEW -->
+
+            <div id="resetView" class="auth-view hidden">
+
+                <button type="button" class="back-button" id="backToForgot">
+                    ← Back
+                </button>
+
+
+                <div class="auth-heading">
+
+                    <span class="eyebrow">
+                        Create new password
+                    </span>
+
+                    <h1>Reset your password</h1>
+
+                    <p>
+                        Enter the verification code and your
+                        new password.
+                    </p>
+
+                </div>
+
+
+                <div id="resetMessage" class="message" role="alert" aria-live="polite"></div>
+
+
+                <form id="resetForm">
+
+                    <div class="form-group">
+
+                        <label for="resetOtp">
+                            Verification code
+                        </label>
+
+                        <input type="text" id="resetOtp" maxlength="6" inputmode="numeric" placeholder="6-digit code"
+                            required>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="newPassword">
+                            New password
+                        </label>
+
+                        <div class="password-wrapper">
+
+                            <input type="password" id="newPassword" minlength="8" placeholder="At least 8 characters"
+                                required>
+
+                            <button type="button" class="password-toggle" data-target="newPassword">
+                                Show
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="confirmPassword">
+                            Confirm password
+                        </label>
+
+                        <div class="password-wrapper">
+
+                            <input type="password" id="confirmPassword" minlength="8" placeholder="Repeat your password"
+                                required>
+
+                            <button type="button" class="password-toggle" data-target="confirmPassword">
+                                Show
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <button type="submit" class="primary-button" id="resetButton">
+
+                        <span class="button-text">
+                            Reset password
+                        </span>
+
+                        <span class="button-loader">
+                            Resetting...
+                        </span>
+
+                    </button>
+
+                </form>
+
+            </div>
+
+
+            <!-- SUCCESS VIEW -->
+
+            <div id="successView" class="auth-view hidden">
+
+                <div class="success-icon">
+                    ✓
+                </div>
+
+                <div class="auth-heading">
+
+                    <span class="eyebrow">
+                        Password updated
+                    </span>
+
+                    <h1>You're all set</h1>
+
+                    <p>
+                        Your password has been changed successfully.
+                        You can now sign in with your new password.
+                    </p>
+
+                </div>
+
+
+                <button type="button" class="primary-button" id="successLoginButton">
+                    Continue to sign in
+                </button>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script>
+
+        const API_BASE_URL = "/api";
+
+
+
+        const loginView =
+            document.getElementById("loginView");
+
+        const forgotView =
+            document.getElementById("forgotView");
+
+        const resetView =
+            document.getElementById("resetView");
+
+        const successView =
+            document.getElementById("successView");
+
+
+        const loginForm =
+            document.getElementById("loginForm");
+
+        const forgotForm =
+            document.getElementById("forgotForm");
+
+        const resetForm =
+            document.getElementById("resetForm");
+
+
+        const loginMessage =
+            document.getElementById("loginMessage");
+
+        const forgotMessage =
+            document.getElementById("forgotMessage");
+
+        const resetMessage =
+            document.getElementById("resetMessage");
+
+
+        let pendingResetEmail = "";
+
+
+        // VIEW MANAGEMENT
+
+        function showView(view) {
+
+            [
+                loginView,
+                forgotView,
+                resetView,
+                successView
+            ].forEach((item) => {
+                item.classList.add("hidden");
+            });
+
+            view.classList.remove("hidden");
+
+            clearMessages();
+        }
+
+
+        function clearMessages() {
+
+            [
+                loginMessage,
+                forgotMessage,
+                resetMessage
+            ].forEach((element) => {
+
+                element.textContent = "";
+
+                element.className = "message";
+
+            });
+
+        }
+
+
+        // MESSAGE
+
+        function showMessage(element, message, type = "error") {
+
+            element.textContent = message;
+
+            element.className =
+                `message ${type}`;
+
+        }
+
+
+        // LOADING
+
+        function setLoading(button, loading) {
+
+            button.disabled = loading;
+
+            button.classList.toggle(
+                "loading",
+                loading
+            );
+
+        }
+
+
+        // PASSWORD TOGGLE
+
+        document
+            .querySelectorAll(".password-toggle")
+            .forEach((button) => {
+
+                button.addEventListener(
+                    "click",
+                    () => {
+
+                        const input =
+                            document.getElementById(
+                                button.dataset.target
+                            );
+
+                        if (input.type === "password") {
+
+                            input.type = "text";
+
+                            button.textContent = "Hide";
+
+                            button.setAttribute(
+                                "aria-label",
+                                "Hide password"
+                            );
+
+                        } else {
+
+                            input.type = "password";
+
+                            button.textContent = "Show";
+
+                            button.setAttribute(
+                                "aria-label",
+                                "Show password"
+                            );
+
+                        }
+
+                    }
+                );
+
+            });
+
+
+        // LOGIN
+
+        // LOGIN
+
+        loginForm.addEventListener(
+            "submit",
+            async (event) => {
+
+                event.preventDefault();
+
+                clearMessages();
+
+                const email = document
+                    .getElementById("loginEmail")
+                    .value
+                    .trim()
+                    .toLowerCase();
+
+                const password = document
+                    .getElementById("loginPassword")
+                    .value;
+
+
+                // VALIDATION
+
+                if (!email) {
+                    showMessage(
+                        loginMessage,
+                        "Email is required."
+                    );
+                    return;
+                }
+
+                if (!password) {
+                    showMessage(
+                        loginMessage,
+                        "Password is required."
+                    );
+                    return;
+                }
+
+
+                const button =
+                    document.getElementById("loginButton");
+
+                setLoading(button, true);
+
+
+                try {
+
+                    const response = await fetch(
+                        `${API_BASE_URL}/login`,
+                        {
+                            method: "POST",
+
+                            headers: {
+                                "Content-Type":
+                                    "application/json"
+                            },
+
+                            body: JSON.stringify({
+                                email,
+                                password
+                            })
+                        }
+                    );
+
+
+                    const data =
+                        await response.json();
+
+
+                    if (!response.ok) {
+                        throw new Error(
+                            data.message ||
+                            "Login failed."
+                        );
+                    }
+
+
+                    const token =
+                        data.token ||
+                        data.data?.token ||
+                        data.accessToken;
+
+
+                    if (!token) {
+                        throw new Error(
+                            "Login succeeded but no authentication token was returned."
+                        );
+                    }
+
+
+                    localStorage.setItem(
+                        "authToken",
+                        token
+                    );
+
+
+
+                    localStorage.setItem(
+                        "user",
+                        JSON.stringify(
+                            data.user ||
+                            data.data?.user ||
+                            {}
+                        )
+                    );
+
+
+
+                    showMessage(
+                        loginMessage,
+                        "Login successful. Redirecting...",
+                        "success"
+                    );
+
+
+
+                    setTimeout(() => {
+                        window.location.href =
+                            "/dashboard";
+                    }, 700);
+
+
+                } catch (error) {
+
+                    showMessage(
+                        loginMessage,
+                        error.message
+                    );
+
+                } finally {
+
+                    setLoading(
+                        button,
+                        false
+                    );
+
+                }
+
+            }
+        );
+
+
+        // FORGOT PASSWORD
+
+        document
+            .getElementById("forgotPasswordButton")
+            .addEventListener(
+                "click",
+                () => {
+
+                    const email =
+                        document
+                            .getElementById("loginEmail")
+                            .value
+                            .trim();
+
+                    if (email) {
+
+                        document
+                            .getElementById("forgotEmail")
+                            .value = email;
+
+                    }
+
+                    showView(forgotView);
+
+                }
+            );
+
+
+        document
+            .getElementById("backToLoginFromForgot")
+            .addEventListener(
+                "click",
+                () => {
+                    showView(loginView);
+                }
+            );
+
+
+        forgotForm.addEventListener(
+            "submit",
+            async (event) => {
+
+                event.preventDefault();
+
+                const email =
+                    document
+                        .getElementById("forgotEmail")
+                        .value
+                        .trim()
+                        .toLowerCase();
+
+
+                if (!email) {
+
+                    showMessage(
+                        forgotMessage,
+                        "Please enter your email address."
+                    );
+
+                    return;
+                }
+
+
+                pendingResetEmail = email;
+
+
+                const button =
+                    document.getElementById(
+                        "forgotButton"
+                    );
+
+
+                setLoading(button, true);
+
+
+                try {
+
+                    const response =
+                        await fetch(
+                            `${API_BASE_URL}/forgotpassword`,
+                            {
+                                method: "POST",
+
+                                headers: {
+                                    "Content-Type":
+                                        "application/json"
+                                },
+
+                                body: JSON.stringify({
+                                    email
+                                })
+                            }
+                        );
+
+
+                    const data =
+                        await response.json();
+
+
+                    if (!response.ok) {
+
+                        throw new Error(
+                            data.message ||
+                            "Unable to send reset code."
+                        );
+
+                    }
+
+
+                    showMessage(
+                        forgotMessage,
+                        data.message ||
+                        "Verification code sent to your email.",
+                        "success"
+                    );
+
+
+                    setTimeout(() => {
+
+                        showView(resetView);
+
+                    }, 700);
+
+
+                } catch (error) {
+
+                    showMessage(
+                        forgotMessage,
+                        error.message
+                    );
+
+                } finally {
+
+                    setLoading(button, false);
+
+                }
+
+            }
+        );
+
+
+        // RESET PASSWORD
+
+        document
+            .getElementById("backToForgot")
+            .addEventListener(
+                "click",
+                () => {
+                    showView(forgotView);
+                }
+            );
+
+
+        resetForm.addEventListener(
+            "submit",
+            async (event) => {
+
+                event.preventDefault();
+
+
+                const otp =
+                    document
+                        .getElementById("resetOtp")
+                        .value
+                        .trim();
+
+                const password =
+                    document
+                        .getElementById("newPassword")
+                        .value;
+
+                const confirmPassword =
+                    document
+                        .getElementById("confirmPassword")
+                        .value;
+
+
+                if (!/^\d{6}$/.test(otp)) {
+
+                    showMessage(
+                        resetMessage,
+                        "Please enter a valid 6-digit verification code."
+                    );
+
+                    return;
+                }
+
+
+                if (password.length < 8) {
+
+                    showMessage(
+                        resetMessage,
+                        "Password must contain at least 8 characters."
+                    );
+
+                    return;
+                }
+
+
+                if (password !== confirmPassword) {
+
+                    showMessage(
+                        resetMessage,
+                        "Passwords do not match."
+                    );
+
+                    return;
+                }
+
+
+                const button =
+                    document.getElementById(
+                        "resetButton"
+                    );
+
+
+                setLoading(button, true);
+
+
+                try {
+
+                    const response =
+                        await fetch(
+                            `${API_BASE_URL}/resetpassword`,
+                            {
+                                method: "POST",
+
+                                headers: {
+                                    "Content-Type":
+                                        "application/json"
+                                },
+
+                                body: JSON.stringify({
+                                    email:
+                                        pendingResetEmail,
+
+                                    otp,
+
+                                    password,
+
+                                    newPassword:
+                                        password
+                                })
+                            }
+                        );
+
+
+                    const data =
+                        await response.json();
+
+
+                    if (!response.ok) {
+
+                        throw new Error(
+                            data.message ||
+                            "Unable to reset password."
+                        );
+
+                    }
+
+
+                    showView(successView);
+
+
+                } catch (error) {
+
+                    showMessage(
+                        resetMessage,
+                        error.message
+                    );
+
+                } finally {
+
+                    setLoading(button, false);
+
+                }
+
+            }
+        );
+
+
+        // SUCCESSFUL LOGIN
+
+        document
+            .getElementById("successLoginButton")
+            .addEventListener(
+                "click",
+                () => {
+
+                    resetForm.reset();
+
+                    document
+                        .getElementById("loginPassword")
+                        .value = "";
+
+                    showView(loginView);
+
+                }
+            );
+
+
+        // SIGNUP
+
+        document
+            .getElementById("showSignupButton")
+            .addEventListener(
+                "click",
+                () => {
+
+                    window.location.href =
+                        "/signup";
+
+                }
+            );
+
+
+
+    </script>
+
+</body>
+
+</html>

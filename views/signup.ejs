@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Create Account</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="/css/auth.css">
+
+</head>
+
+
+<body>
+
+    <main class="auth-page">
+
+        <section class="auth-container">
+
+            <!-- Brand -->
+
+            <div class="auth-brand">
+
+                <div class="brand-logo">
+                    A
+                </div>
+
+                <span>
+                    Authentication
+                </span>
+
+            </div>
+
+
+            <!-- SIGNUP VIEW -->
+
+            <div id="signupView" class="auth-view">
+
+                <div class="auth-heading">
+
+                    <span class="eyebrow">
+                        Get started
+                    </span>
+
+                    <h1>
+                        Create your account
+                    </h1>
+
+                    <p>
+                        Create an account to access your dashboard.
+                    </p>
+
+                </div>
+
+
+                <div id="signupMessage" class="message" role="alert" aria-live="polite"></div>
+
+
+                <form id="signupForm" novalidate>
+
+                    <!-- Name -->
+
+                    <div class="form-group">
+
+                        <label for="signupName">
+                            Full name
+                        </label>
+
+                        <input type="text" id="signupName" placeholder="Your name" autocomplete="name" minlength="2"
+                            maxlength="50" required>
+
+                        <small id="nameError" class="field-error"></small>
+
+                    </div>
+
+
+                    <!-- Email -->
+
+                    <div class="form-group">
+
+                        <label for="signupEmail">
+                            Email address
+                        </label>
+
+                        <input type="email" id="signupEmail" placeholder="you@example.com" autocomplete="email"
+                            required>
+
+                        <small id="emailError" class="field-error"></small>
+
+                    </div>
+
+
+                    <!-- Password -->
+
+                    <div class="form-group">
+
+                        <label for="signupPassword">
+                            Password
+                        </label>
+
+                        <div class="password-wrapper">
+
+                            <input type="password" id="signupPassword" placeholder="At least 8 characters" minlength="8"
+                                autocomplete="new-password" required>
+
+                            <button type="button" class="password-toggle" data-target="signupPassword">
+                                Show
+                            </button>
+
+                        </div>
+
+                        <div id="passwordStrength" class="password-strength"></div>
+
+                        <small id="passwordError" class="field-error"></small>
+
+                    </div>
+
+
+                    <!-- Confirm Password -->
+
+                    <div class="form-group">
+
+                        <label for="signupConfirmPassword">
+                            Confirm password
+                        </label>
+
+                        <div class="password-wrapper">
+
+                            <input type="password" id="signupConfirmPassword" placeholder="Repeat your password"
+                                autocomplete="new-password" required>
+
+                            <button type="button" class="password-toggle" data-target="signupConfirmPassword">
+                                Show
+                            </button>
+
+                        </div>
+
+                        <small id="confirmPasswordError" class="field-error"></small>
+
+                    </div>
+
+
+                    <!-- Phone -->
+
+                    <div class="form-group">
+
+                        <label for="signupPhone">
+                            Phone
+                            <span class="optional">
+                                Optional
+                            </span>
+                        </label>
+
+                        <input type="tel" id="signupPhone" placeholder="+92 300 1234567" autocomplete="tel">
+
+                    </div>
+
+
+                    <button type="submit" class="primary-button" id="signupButton">
+
+                        <span class="button-text">
+                            Create account
+                        </span>
+
+                        <span class="button-loader">
+                            Creating account...
+                        </span>
+
+                    </button>
+
+                </form>
+
+
+                <div class="auth-footer">
+
+                    <span>
+                        Already have an account?
+                    </span>
+
+                    <a href="/login" class="link-button">
+                        Sign in
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- VERIFY EMAIL VIEW -->
+
+            <div id="verifyView" class="auth-view hidden">
+
+                <button type="button" class="back-button" id="backToSignup">
+                    ← Back
+                </button>
+
+
+                <div class="auth-heading">
+
+                    <span class="eyebrow">
+                        Verify your email
+                    </span>
+
+                    <h1>
+                        Check your inbox
+                    </h1>
+
+                    <p>
+                        We sent a 6-digit verification code to
+                        <strong id="verificationEmail">
+                            your email
+                        </strong>.
+                    </p>
+
+                </div>
+
+
+                <div id="verifyMessage" class="message" role="alert" aria-live="polite"></div>
+
+
+                <form id="verifyForm">
+
+                    <div class="form-group">
+
+                        <label for="emailOtp">
+                            Verification code
+                        </label>
+
+                        <input type="text" id="emailOtp" class="otp-input" maxlength="6" minlength="6"
+                            inputmode="numeric" autocomplete="one-time-code" placeholder="000000" required>
+
+                    </div>
+
+
+                    <button type="submit" class="primary-button" id="verifyButton">
+
+                        <span class="button-text">
+                            Verify email
+                        </span>
+
+                        <span class="button-loader">
+                            Verifying...
+                        </span>
+
+                    </button>
+
+                </form>
+
+
+                <div class="resend-area">
+
+                    <p>
+                        Didn't receive the code?
+                    </p>
+
+                    <button type="button" class="text-button" id="resendButton">
+                        Resend code
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- VERIFIED VIEW -->
+
+            <div id="verifiedView" class="auth-view hidden">
+
+                <div class="success-icon">
+                    ✓
+                </div>
+
+
+                <div class="auth-heading">
+
+                    <span class="eyebrow">
+                        Email verified
+                    </span>
+
+                    <h1>
+                        Account created
+                    </h1>
+
+                    <p>
+                        Your email has been verified successfully.
+                        You can now sign in.
+                    </p>
+
+                </div>
+
+
+                <button type="button" class="primary-button" id="goToLoginButton">
+                    Continue to sign in
+                </button>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script>
+
+        const API_BASE_URL = "/api";
+
+
+        // SIGNUP AND VERIFY EMAIL LOGIC
+
+        const signupView =
+            document.getElementById("signupView");
+
+        const verifyView =
+            document.getElementById("verifyView");
+
+        const verifiedView =
+            document.getElementById("verifiedView");
+
+
+        const signupForm =
+            document.getElementById("signupForm");
+
+        const verifyForm =
+            document.getElementById("verifyForm");
+
+
+        const signupMessage =
+            document.getElementById("signupMessage");
+
+        const verifyMessage =
+            document.getElementById("verifyMessage");
+
+
+        let pendingEmail = "";
+
+
+        // VIEW
+
+        function showView(view) {
+
+            [
+                signupView,
+                verifyView,
+                verifiedView
+            ].forEach((item) => {
+
+                item.classList.add("hidden");
+
+            });
+
+            view.classList.remove("hidden");
+
+            clearMessages();
+
+        }
+
+
+        // MESSAGE
+
+        function clearMessages() {
+
+            [
+                signupMessage,
+                verifyMessage
+            ].forEach((element) => {
+
+                element.textContent = "";
+
+                element.className = "message";
+
+            });
+
+        }
+
+
+        function showMessage(
+            element,
+            message,
+            type = "error"
+        ) {
+
+            element.textContent = message;
+
+            element.className =
+                `message ${type}`;
+
+        }
+
+
+        // LOADING
+
+        function setLoading(button, loading) {
+
+            button.disabled = loading;
+
+            button.classList.toggle(
+                "loading",
+                loading
+            );
+
+        }
+
+
+        // PASSWORD TOGGLE
+
+        document
+            .querySelectorAll(".password-toggle")
+            .forEach((button) => {
+
+                button.addEventListener(
+                    "click",
+                    () => {
+
+                        const input =
+                            document.getElementById(
+                                button.dataset.target
+                            );
+
+
+                        if (input.type === "password") {
+
+                            input.type = "text";
+
+                            button.textContent = "Hide";
+
+                        } else {
+
+                            input.type = "password";
+
+                            button.textContent = "Show";
+
+                        }
+
+                    }
+                );
+
+            });
+
+
+        // PASSWORD STRENGTH
+
+        const signupPassword =
+            document.getElementById(
+                "signupPassword"
+            );
+
+        const passwordStrength =
+            document.getElementById(
+                "passwordStrength"
+            );
+
+
+        signupPassword.addEventListener(
+            "input",
+            () => {
+
+                const password =
+                    signupPassword.value;
+
+
+                if (!password) {
+
+                    passwordStrength.textContent = "";
+
+                    passwordStrength.className =
+                        "password-strength";
+
+                    return;
+
+                }
+
+
+                let score = 0;
+
+
+                if (password.length >= 8)
+                    score++;
+
+                if (/[A-Z]/.test(password))
+                    score++;
+
+                if (/[0-9]/.test(password))
+                    score++;
+
+                if (/[^A-Za-z0-9]/.test(password))
+                    score++;
+
+
+                if (score <= 1) {
+
+                    passwordStrength.textContent =
+                        "Weak password";
+
+                    passwordStrength.className =
+                        "password-strength weak";
+
+                } else if (score <= 2) {
+
+                    passwordStrength.textContent =
+                        "Medium password";
+
+                    passwordStrength.className =
+                        "password-strength medium";
+
+                } else {
+
+                    passwordStrength.textContent =
+                        "Strong password";
+
+                    passwordStrength.className =
+                        "password-strength strong";
+
+                }
+
+            }
+        );
+
+
+        // SIGNUP
+
+        signupForm.addEventListener(
+            "submit",
+            async (event) => {
+
+                event.preventDefault();
+
+                clearMessages();
+
+
+                const name =
+                    document
+                        .getElementById("signupName")
+                        .value
+                        .trim();
+
+
+                const email =
+                    document
+                        .getElementById("signupEmail")
+                        .value
+                        .trim()
+                        .toLowerCase();
+
+
+                const password =
+                    document
+                        .getElementById("signupPassword")
+                        .value;
+
+
+                const confirmPassword =
+                    document
+                        .getElementById("signupConfirmPassword")
+                        .value;
+
+
+                const phone =
+                    document
+                        .getElementById("signupPhone")
+                        .value
+                        .trim();
+
+
+                // Validation
+
+                if (name.length < 2) {
+
+                    showMessage(
+                        signupMessage,
+                        "Name must contain at least 2 characters."
+                    );
+
+                    return;
+
+                }
+
+
+                const emailRegex =
+                    /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+
+                if (!emailRegex.test(email)) {
+
+                    showMessage(
+                        signupMessage,
+                        "Please provide a valid email address."
+                    );
+
+                    return;
+
+                }
+
+                if (!password) {
+                    showMessage(
+                        signupMessage,
+                        "Password is required."
+                    );
+                    return;
+                }
+                if (password.length < 8) {
+
+                    showMessage(
+                        signupMessage,
+                        "Password must contain at least 8 characters."
+                    );
+
+                    return;
+
+                }
+
+
+                if (!confirmPassword) {
+                    showMessage(
+                        signupMessage,
+                        "Confirm password is required."
+                    );
+                    return;
+                }
+
+                if (password !== confirmPassword) {
+                    showMessage(
+                        signupMessage,
+                        "Passwords do not match."
+                    );
+                    return;
+                }
+                if (password !== confirmPassword) {
+
+                    showMessage(
+                        signupMessage,
+                        "Passwords do not match."
+                    );
+
+                    return;
+
+                }
+
+
+                const button =
+                    document.getElementById(
+                        "signupButton"
+                    );
+
+
+                setLoading(button, true);
+
+
+                try {
+
+                    const response =
+                        await fetch(
+                            `${API_BASE_URL}/signup`,
+                            {
+                                method: "POST",
+
+                                headers: {
+                                    "Content-Type":
+                                        "application/json"
+                                },
+
+                                body: JSON.stringify({
+
+                                    name,
+
+                                    email,
+
+                                    password,
+
+                                    phone
+
+                                })
+                            }
+                        );
+
+
+                    const data =
+                        await response.json();
+
+
+                    if (!response.ok) {
+
+                        throw new Error(
+                            data.message ||
+                            "Unable to create account."
+                        );
+
+                    }
+
+
+                    pendingEmail = email;
+
+
+                    document
+                        .getElementById(
+                            "verificationEmail"
+                        )
+                        .textContent = email;
+
+
+                    showView(verifyView);
+
+
+                    showMessage(
+                        verifyMessage,
+                        data.message ||
+                        "Verification code sent to your email.",
+                        "success"
+                    );
+
+
+                } catch (error) {
+
+                    showMessage(
+                        signupMessage,
+                        error.message
+                    );
+
+                } finally {
+
+                    setLoading(button, false);
+
+                }
+
+            }
+        );
+
+
+        // VERIFY EMAIL
+
+        verifyForm.addEventListener(
+            "submit",
+            async (event) => {
+
+                event.preventDefault();
+
+
+                const otp =
+                    document
+                        .getElementById("emailOtp")
+                        .value
+                        .trim();
+
+
+                if (!/^\d{6}$/.test(otp)) {
+
+                    showMessage(
+                        verifyMessage,
+                        "Please enter a valid 6-digit code."
+                    );
+
+                    return;
+
+                }
+
+
+                const button =
+                    document.getElementById(
+                        "verifyButton"
+                    );
+
+
+                setLoading(button, true);
+
+
+                try {
+
+                    const response =
+                        await fetch(
+                            `${API_BASE_URL}/verifyemail`,
+                            {
+                                method: "POST",
+
+                                headers: {
+                                    "Content-Type":
+                                        "application/json"
+                                },
+
+                                body: JSON.stringify({
+
+                                    email:
+                                        pendingEmail,
+
+                                    otp
+
+                                })
+                            }
+                        );
+
+
+                    const data =
+                        await response.json();
+
+
+                    if (!response.ok) {
+
+                        throw new Error(
+                            data.message ||
+                            "Email verification failed."
+                        );
+
+                    }
+
+                    showView(verifiedView);
+
+
+
+
+                } catch (error) {
+
+                    showMessage(
+                        verifyMessage,
+                        error.message
+                    );
+
+                } finally {
+
+                    setLoading(button, false);
+
+                }
+
+            }
+        );
+
+
+        // RESEND OTP
+
+        document
+            .getElementById("resendButton")
+            .addEventListener(
+                "click",
+                async () => {
+
+                    if (!pendingEmail) {
+
+                        showMessage(
+                            verifyMessage,
+                            "Email address is missing."
+                        );
+
+                        return;
+
+                    }
+
+
+                    const button =
+                        document.getElementById(
+                            "resendButton"
+                        );
+
+
+                    button.disabled = true;
+
+
+                    try {
+
+                        const response =
+                            await fetch(
+                                `${API_BASE_URL}/resendotp`,
+                                {
+                                    method: "POST",
+
+                                    headers: {
+                                        "Content-Type":
+                                            "application/json"
+                                    },
+
+                                    body: JSON.stringify({
+
+                                        email:
+                                            pendingEmail
+
+                                    })
+                                }
+                            );
+
+
+                        const data =
+                            await response.json();
+
+
+                        if (!response.ok) {
+
+                            throw new Error(
+                                data.message ||
+                                "Unable to resend OTP."
+                            );
+
+                        }
+
+
+                        showMessage(
+                            verifyMessage,
+                            data.message ||
+                            "A new verification code has been sent.",
+                            "success"
+                        );
+
+
+                    } catch (error) {
+
+                        showMessage(
+                            verifyMessage,
+                            error.message
+                        );
+
+                    } finally {
+
+                        setTimeout(() => {
+
+                            button.disabled = false;
+
+                        }, 30000);
+
+                    }
+
+                }
+            );
+
+
+        // BACK TO SIGNUP
+
+        document
+            .getElementById("backToSignup")
+            .addEventListener(
+                "click",
+                () => {
+
+                    showView(signupView);
+
+                }
+            );
+
+
+        // GO TO LOGIN
+
+        document
+            .getElementById("goToLoginButton")
+            .addEventListener(
+                "click",
+                () => {
+
+                    window.location.href =
+                        "/login";
+
+                }
+            );
+
+    </script>
+
+</body>
+
+</html>

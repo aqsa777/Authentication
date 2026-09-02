@@ -1,15 +1,16 @@
 import express from "express";
-import signup from "../controllers/signupController.js";
-import verifyEmail from "../controllers/verifyEmailController.js";
-import resendOtp from "../controllers/resendOtpController.js";
-import login from "../controllers/loginController.js";
-import getMe from "../controllers/getMeController.js";
+import {
+    signup,
+    verifyEmail,
+    resendOtp,
+    login,
+    getMe,
+    updateProfile,
+    changePassword,
+    forgotPassword,
+    resetPassword
+} from "../controllers/authController.js";
 import protect from "../middleware/authMiddleware.js";
-import updateProfile from "../controllers/updateProfileController.js";
-import changePassword from "../controllers/changePasswordController.js";
-import forgotPassword from "../controllers/forgetPasswordController.js";
-import resetPassword from "../controllers/resetPasswordController.js";
-
 
 const router = express.Router();
 

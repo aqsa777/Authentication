@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Dashboard</title>
+
+    <link rel="stylesheet" href="/css/auth.css">
+</head>
+
+<body>
+
+    <main class="auth-page">
+
+        <section class="auth-container">
+
+            <div class="success-icon">
+                ✓
+            </div>
+
+            <div class="auth-heading">
+
+                <span class="eyebrow">
+                    Welcome
+                </span>
+
+                <h1>
+                    Successfully logged in
+                </h1>
+
+                <p>
+                    You have successfully signed in to your account.
+                </p>
+
+            </div>
+
+            <button type="button" class="primary-button" onclick="logout()">
+                Sign out
+            </button>
+
+        </section>
+
+    </main>
+
+    <script>
+        function logout() {
+            localStorage.removeItem("authToken");
+
+            window.location.href = "/login";
+        }
+    </script>
+
+</body>
+
+</html>
